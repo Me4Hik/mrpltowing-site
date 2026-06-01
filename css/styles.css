@@ -1567,7 +1567,7 @@ h3,
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik START - footer bottom background and header phone icon */
-
+/*
 html {
   background-color: #020617;
 }
@@ -1592,6 +1592,25 @@ html {
   .btn-header-icon {
     font-size: 0.85em;
   }
+}
+*/
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - robust mobile footer background fix */
+
+html,
+body {
+  background-color: #020617;
+}
+
+main {
+  background-color: var(--color-surface-muted);
+}
+
+.site-footer {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
 }
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
