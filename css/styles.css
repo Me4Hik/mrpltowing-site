@@ -1597,7 +1597,7 @@ html {
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik START - robust mobile footer background fix */
-
+/*
 html,
 body {
   background-color: #020617;
@@ -1611,6 +1611,54 @@ main {
   margin-top: 0;
   margin-bottom: 0;
   padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+*/
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - fix mobile footer bottom gap */
+
+:root {
+  --color-footer-bg: #020617;
+}
+
+html {
+  background: var(--color-footer-bg);
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-footer-bg);
+  min-height: 100%;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
+  padding-bottom: 0;
+}
+
+main {
+  background-color: var(--color-surface-muted);
+}
+
+.site-footer {
+  background-color: var(--color-footer-bg);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 767px) {
+  html::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: env(safe-area-inset-bottom, 0px);
+    min-height: 1px;
+    background: var(--color-footer-bg);
+    pointer-events: none;
+    z-index: 850;
+  }
 }
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
