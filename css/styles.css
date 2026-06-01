@@ -26,7 +26,6 @@
   --radius-sm: 8px;
   --shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
   --header-h: 64px;
-  --sticky-bar-h: 56px;
   --container: min(1120px, 100% - 2rem);
 }
 
@@ -47,7 +46,6 @@ body {
   line-height: var(--line-height-body);
   color: var(--color-text);
   background: var(--color-surface-muted);
-  padding-bottom: var(--sticky-bar-h);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -143,8 +141,8 @@ summary:focus-visible {
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
 
-/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Sticky mobile call bar */
-
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - remove bottom sticky spacing/styles */
+/*
 .sticky-call-bar {
   position: fixed;
   bottom: 0;
@@ -175,7 +173,7 @@ summary:focus-visible {
     display: none;
   }
 }
-
+*/
 /* 02.03.2026 DB Refactoring cursor by Me4Hik END */
 
 /* 02.03.2026 DB Refactoring cursor by Me4Hik START - Header */
@@ -1429,9 +1427,13 @@ h3,
   letter-spacing: 0.045em;
 }
 
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - remove bottom sticky spacing/styles */
+/*
 .btn-call-bar span:last-child {
   letter-spacing: 0.03em;
 }
+*/
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
 
 .final-cta h2 {
   font-family: var(--font-heading);
