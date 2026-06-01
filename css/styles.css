@@ -1,0 +1,1565 @@
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - MRPL Towing global styles and design tokens */
+
+:root {
+  --color-bg: #0f172a;
+  --color-bg-alt: #1e293b;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-text-inverse: #f8fafc;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
+  --color-call: #16a34a;
+  --color-call-hover: #15803d;
+  --color-border: #e2e8f0;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Arial Black", "Arial Narrow", Impact, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-body);
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.06em;
+  --letter-spacing-btn: 0.04em;
+  --line-height-body: 1.65;
+  --line-height-heading: 1.12;
+  --text-prose-max: 38rem;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(15, 23, 42, 0.12);
+  --header-h: 64px;
+  --sticky-bar-h: 56px;
+  --container: min(1120px, 100% - 2rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background: var(--color-surface-muted);
+  padding-bottom: var(--sticky-bar-h);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: #1d4ed8;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Buttons and call actions */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  text-align: center;
+  min-height: 48px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-call {
+  background: var(--color-call);
+  color: #fff;
+}
+
+.btn-call:hover {
+  background: var(--color-call-hover);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1.0625rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Sticky mobile call bar */
+
+.sticky-call-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: var(--color-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-call-bar {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.btn-call-icon {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+
+  .sticky-call-bar {
+    display: none;
+  }
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: var(--color-bg);
+  color: var(--color-text-inverse);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-h);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 800;
+  font-size: 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.logo-text {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+}
+
+.btn-header {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .logo-text {
+    display: none;
+  }
+
+  .btn-header span {
+    font-size: 0.75rem;
+  }
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Hero */
+
+.hero {
+  background: linear-gradient(160deg, var(--color-bg) 0%, #1e3a5f 100%);
+  color: var(--color-text-inverse);
+  padding: 2.5rem 0 3rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero .eyebrow {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.hero-lead {
+  margin: 0 0 1.5rem;
+  color: #cbd5e1;
+  font-size: 1.0625rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-trust {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #94a3b8;
+}
+
+.hero-trust strong {
+  color: var(--color-accent);
+}
+
+.hero .btn-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--color-text-inverse);
+}
+
+.hero .btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .btn-lg {
+    width: auto;
+  }
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Sections and cards */
+
+.section {
+  padding: 3rem 0;
+}
+
+.section-alt {
+  background: var(--color-surface);
+}
+
+.section-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.section-header h2 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.section-note {
+  margin: 1.5rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.section-alt .card {
+  background: var(--color-surface-muted);
+}
+
+.card-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.125rem;
+}
+
+.service-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.service-card--cta {
+  background: var(--color-bg);
+  color: var(--color-text-inverse);
+  border-color: var(--color-bg);
+}
+
+.service-card--cta p {
+  color: #cbd5e1;
+}
+
+.service-card--cta .btn-call {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - services CTA card contrast fix (override section-alt .card) */
+.section-alt .service-card--cta {
+  background: var(--color-bg);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-inverse);
+}
+
+.service-card--cta h3 {
+  color: #ffffff;
+}
+
+.service-card--cta p {
+  color: #e2e8f0;
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Features, reviews, steps */
+
+.feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .feature-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.feature-list li {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.feature-list strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.0625rem;
+}
+
+.feature-list span {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.rating-line {
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.rating-stars {
+  color: var(--color-accent);
+}
+
+.review-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .review-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card blockquote {
+  margin: 0 0 0.75rem;
+}
+
+.review-card blockquote p {
+  margin: 0;
+  font-style: italic;
+}
+
+.review-card footer {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - 7 Google reviews grid and card layout */
+.review-grid--seven {
+  gap: 1.25rem;
+}
+
+.review-card-stars {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.review-card-footer {
+  margin: 0;
+}
+
+.review-card-footer cite {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.review-meta {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.review-grid--seven .review-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.review-grid--seven .review-card blockquote {
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .review-grid--seven {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .review-grid--seven {
+    grid-template-columns: 1fr;
+  }
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+.steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .steps-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.step {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: var(--color-surface-muted);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 800;
+  border-radius: 50%;
+  margin-bottom: 0.75rem;
+}
+
+.step h3 {
+  margin: 0 0 0.5rem;
+}
+
+.step p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Image placeholders */
+
+.media-block {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  aspect-ratio: 4 / 3;
+  border: 2px dashed #64748b;
+}
+
+.media-block::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.media-block img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-block.is-loaded::before {
+  display: none;
+}
+
+.media-block.is-loaded {
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.media-block--hero {
+  aspect-ratio: 4 / 3;
+}
+
+.media-block--logo {
+  aspect-ratio: 1;
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+.gallery-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - real photo gallery and hero (no empty slots) */
+.gallery-grid--photos {
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .gallery-grid--photos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.hero-media .media-block--hero {
+  border: none;
+  box-shadow: var(--shadow);
+}
+
+.hero-media .media-block--hero::before {
+  display: none;
+}
+
+.gallery-grid--photos .media-block,
+.gbp-visual-slot.media-block {
+  border: none;
+  background: var(--color-bg-alt);
+}
+
+.gallery-grid--photos .media-block::before,
+.gbp-visual-slot.media-block::before {
+  display: none;
+}
+
+.media-block:has(img[src]) {
+  border: 1px solid var(--color-border);
+}
+
+.media-block:has(img[src])::before {
+  display: none;
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - production image slots (no missing-file 404) */
+.media-block--slot {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: linear-gradient(160deg, var(--color-bg-alt) 0%, #334155 55%, var(--color-bg-alt) 100%);
+}
+
+.media-block--slot::before {
+  color: #cbd5e1;
+  font-weight: 500;
+  max-width: 14rem;
+  line-height: 1.4;
+}
+
+.gallery-grid--slots .media-block--slot {
+  min-height: 12rem;
+}
+
+.gbp-visual-slot {
+  opacity: 0.92;
+}
+
+.gbp-cta-pending {
+  display: none;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Service area, GBP, FAQ, final CTA */
+
+.area-card p {
+  margin: 0 0 1rem;
+}
+
+.area-card p:last-child {
+  margin-bottom: 0;
+}
+
+.area-primary {
+  font-size: 1.125rem;
+}
+
+.gbp-inner {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .gbp-inner {
+    grid-template-columns: 1fr auto;
+    text-align: left;
+  }
+}
+
+.faq-list {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.faq-item {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 1rem 0;
+  list-style-position: outside;
+}
+
+.faq-item p {
+  margin: 0 0 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.final-cta {
+  background: var(--color-bg);
+  color: var(--color-text-inverse);
+  text-align: center;
+}
+
+.final-cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.final-cta h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.final-cta p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.final-cta-note {
+  font-size: 0.875rem !important;
+  color: #94a3b8 !important;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - Footer */
+
+.site-footer {
+  background: #020617;
+  color: #94a3b8;
+  padding: 2.5rem 0 1rem;
+  font-size: 0.9375rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer-name {
+  margin: 0 0 0.25rem;
+  color: var(--color-text-inverse);
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.footer-legal,
+.footer-brand p {
+  margin: 0 0 0.35rem;
+}
+
+.site-footer a {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.8125rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - visual polish: cards, CTA pulse, hero, gallery, FAQ, lightbox, reveal */
+:root {
+  --shadow-hover: 0 12px 32px rgba(15, 23, 42, 0.14);
+  --transition-base: 0.25s ease;
+}
+
+.card,
+.feature-list li,
+.step {
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.service-card:hover,
+.review-card:hover,
+.feature-list li:hover,
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-grid--photos li {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.gallery-grid--photos li:hover {
+  transform: translateY(-3px);
+}
+
+.gallery-item {
+  cursor: zoom-in;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-hover);
+}
+
+.gallery-thumb {
+  cursor: zoom-in;
+}
+
+.hero-media .media-block--hero {
+  overflow: hidden;
+  transition: box-shadow var(--transition-base);
+}
+
+.hero-media .media-block--hero img {
+  transition: transform 0.45s ease;
+}
+
+.hero-media .media-block--hero:hover img {
+  transform: scale(1.04);
+}
+
+.hero-media .media-block--hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.hero-media .media-block--hero:hover::after {
+  transform: translateX(120%);
+}
+
+.btn-call {
+  transition: background var(--transition-base), transform 0.15s ease, box-shadow var(--transition-base);
+}
+
+.btn-call:hover {
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
+}
+
+.btn-call.is-clicked {
+  transform: scale(0.96);
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4);
+}
+
+.btn-call-pulse {
+  animation: call-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes call-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(22, 163, 74, 0);
+  }
+}
+
+.cta-phone:not(.btn) {
+  transition: color var(--transition-base), opacity var(--transition-base);
+}
+
+.cta-phone:not(.btn).is-clicked {
+  opacity: 0.75;
+}
+
+.faq-item {
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.faq-item:hover {
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
+.faq-item[open] {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow);
+  background: var(--color-surface);
+}
+
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: color var(--transition-base);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::marker {
+  content: "";
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--color-surface-muted);
+  color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: background var(--transition-base), color var(--transition-base), transform var(--transition-base);
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.faq-item summary:hover::after {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.lightbox[hidden] {
+  display: none !important;
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(2, 6, 23, 0.88);
+  cursor: zoom-out;
+}
+
+.lightbox-image {
+  display: block;
+  position: relative;
+  z-index: 1;
+  max-width: min(96vw, 960px);
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-image[hidden] {
+  display: none !important;
+}
+
+.lightbox-fallback {
+  margin: 0;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.lightbox-fallback[hidden] {
+  display: none !important;
+}
+
+.lightbox-panel {
+  position: relative;
+  z-index: 2;
+  width: min(96vw, 960px);
+  max-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.lightbox-figure {
+  margin: 0;
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-btn {
+  position: absolute;
+  z-index: 3;
+  border: none;
+  background: rgba(15, 23, 42, 0.75);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-base), transform 0.15s ease;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.lightbox-btn:hover {
+  background: rgba(245, 158, 11, 0.95);
+  color: var(--color-bg);
+}
+
+.lightbox-close {
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.lightbox-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  padding-bottom: 0.15rem;
+}
+
+.lightbox-prev {
+  left: 0.5rem;
+}
+
+.lightbox-next {
+  right: 0.5rem;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px) {
+  .lightbox-nav {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.75rem;
+  }
+
+  .lightbox-prev {
+    left: 0.25rem;
+  }
+
+  .lightbox-next {
+    right: 0.25rem;
+  }
+
+  .lightbox-close {
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .card,
+  .feature-list li,
+  .step,
+  .gallery-grid--photos li,
+  .gallery-item,
+  .hero-media .media-block--hero img,
+  .btn-call,
+  .faq-item,
+  .faq-item summary::after {
+    transition: none !important;
+  }
+
+  .btn-call-pulse {
+    animation: none;
+  }
+
+  .hero-media .media-block--hero::after {
+    display: none;
+  }
+
+  .service-card:hover,
+  .review-card:hover,
+  .feature-list li:hover,
+  .step:hover,
+  .gallery-grid--photos li:hover,
+  .gallery-item:hover {
+    transform: none;
+  }
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - typography polish: headings, body, reviews, FAQ, buttons */
+h1,
+h2,
+h3,
+.logo-text,
+.btn {
+  font-family: var(--font-heading);
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: var(--line-height-heading);
+  letter-spacing: var(--letter-spacing-tight);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+  max-width: min(100%, 22ch);
+}
+
+.hero-accent {
+  display: inline;
+  background: linear-gradient(90deg, var(--color-accent) 0%, #fcd34d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  box-decoration-break: clone;
+}
+
+@supports not (background-clip: text) {
+  .hero-accent {
+    color: var(--color-accent);
+    background: none;
+  }
+}
+
+.hero .eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  letter-spacing: var(--letter-spacing-wide);
+  font-weight: 700;
+}
+
+.hero-lead {
+  max-width: var(--text-prose-max);
+  line-height: 1.7;
+  font-size: 1.0625rem;
+}
+
+.hero-trust {
+  letter-spacing: 0.01em;
+}
+
+.section-header h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.15;
+  text-transform: none;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.section-header h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin: 0.65rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-accent), #fcd34d);
+}
+
+.section-header p {
+  max-width: var(--text-prose-max);
+  margin-inline: auto;
+  line-height: 1.65;
+  font-size: 1.03125rem;
+}
+
+.service-card h3,
+.step h3,
+.feature-list strong {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.service-card p,
+.feature-list span,
+.step p,
+.faq-item p,
+.area-card p,
+.section-note {
+  line-height: 1.65;
+}
+
+.service-card p,
+.faq-item p {
+  max-width: 52ch;
+}
+
+.prose-text {
+  max-width: var(--text-prose-max);
+}
+
+.rating-line {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.rating-badge {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-size: 0.9375rem;
+}
+
+.review-card {
+  border-left: 3px solid rgba(245, 158, 11, 0.55);
+}
+
+.review-card blockquote {
+  position: relative;
+  padding-left: 1.125rem;
+  margin-left: 0.125rem;
+}
+
+.review-card blockquote::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.125rem;
+  top: -0.35rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.85;
+  font-weight: 700;
+}
+
+.review-card blockquote p {
+  font-style: normal;
+  font-size: 0.96875rem;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.review-card-footer cite {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  letter-spacing: 0.01em;
+}
+
+.review-meta {
+  font-size: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #64748b;
+}
+
+.faq-item summary {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.faq-item[open] summary {
+  color: var(--color-text);
+}
+
+.faq-item[open] {
+  background: linear-gradient(180deg, #fffbeb 0%, var(--color-surface) 100%);
+}
+
+.btn {
+  letter-spacing: var(--letter-spacing-btn);
+  font-weight: 800;
+  font-size: 0.9375rem;
+}
+
+.btn-lg {
+  font-size: 1rem;
+  letter-spacing: 0.045em;
+}
+
+.btn-call-bar span:last-child {
+  letter-spacing: 0.03em;
+}
+
+.final-cta h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.footer-name {
+  font-family: var(--font-heading);
+  letter-spacing: 0.02em;
+}
+
+.site-footer {
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .review-card blockquote p {
+    font-size: 0.9375rem;
+  }
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
+
+/* 02.03.2026 DB Refactoring cursor by Me4Hik START - UX fixes: reviews source, hours badge, GBP call card */
+.reviews-source {
+  margin: 0.75rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.hours-badge-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.hours-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  color: #166534;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+}
+
+.hours-badge::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-call);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.hours-note {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+.gbp-call-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.gbp-call-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(22, 163, 74, 0.45);
+}
+
+.gbp-call-card-photo {
+  aspect-ratio: 4 / 3;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+.gbp-call-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gbp-call-card-body {
+  padding: 1rem 1.125rem 1.125rem;
+  text-align: center;
+}
+
+.gbp-call-card-lead {
+  margin: 0 0 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.gbp-call-card-btn {
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .gbp-call-card {
+    margin-inline: 0;
+  }
+}
+/* 02.03.2026 DB Refactoring cursor by Me4Hik END */
