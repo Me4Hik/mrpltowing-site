@@ -46,25 +46,69 @@
     }
   });
 
-  // 02.03.2026 DB Refactoring cursor by Me4Hik START - call CTA tracking-ready stub and click feedback
-  function trackCallClick(phone) {
-    console.info("Phone CTA clicked", phone);
-    if (typeof window.gtag === "function") {
-      window.gtag("event", "phone_call_click", {
-        event_category: "engagement",
-        event_label: phone
-      });
+  // 02.03.2026 DB Refactoring cursor by Me4Hik START - Google Ads phone click conversion
+  var GOOGLE_ADS_PHONE_CONVERSION_SEND_TO = "AW-18004698091/3MFrCOq-jrgcEOvHp4lD";
+  var TEL_CONVERSION_FALLBACK_MS = 800;
+
+  function reportPhoneClickConversion(done) {
+    if (typeof window.gtag !== "function") {
+      if (typeof done === "function") {
+        done();
+      }
+      return;
     }
+    window.gtag("event", "conversion", {
+      send_to: GOOGLE_ADS_PHONE_CONVERSION_SEND_TO,
+      event_callback: function () {
+        if (typeof done === "function") {
+          done();
+        }
+      }
+    });
+  }
+
+  function applyCallClickFeedback(link) {
+    link.classList.add("is-clicked");
+    window.setTimeout(function () {
+      link.classList.remove("is-clicked");
+    }, 220);
   }
 
   document.querySelectorAll(".cta-phone").forEach(function (link) {
-    link.addEventListener("click", function () {
+    link.addEventListener("click", function (event) {
       var phone = link.getAttribute("data-phone") || "+19715638979";
-      trackCallClick(phone);
-      link.classList.add("is-clicked");
-      window.setTimeout(function () {
-        link.classList.remove("is-clicked");
-      }, 220);
+      var href = link.getAttribute("href") || "";
+      var isTelLink = href.indexOf("tel:") === 0;
+      var navigated = false;
+
+      function followTelHref() {
+        if (navigated || !isTelLink) {
+          return;
+        }
+        navigated = true;
+        applyCallClickFeedback(link);
+        window.location.href = href;
+      }
+
+      console.info("Phone CTA clicked", phone);
+
+      if (typeof window.gtag !== "function") {
+        applyCallClickFeedback(link);
+        return;
+      }
+
+      if (!isTelLink) {
+        applyCallClickFeedback(link);
+        reportPhoneClickConversion(null);
+        return;
+      }
+
+      event.preventDefault();
+      var fallbackTimer = window.setTimeout(followTelHref, TEL_CONVERSION_FALLBACK_MS);
+      reportPhoneClickConversion(function () {
+        window.clearTimeout(fallbackTimer);
+        followTelHref();
+      });
     });
   });
   // 02.03.2026 DB Refactoring cursor by Me4Hik END
